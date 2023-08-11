@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="MAIN" Id="{2514b5fd-88f4-47c5-be60-871b9fead928}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+
+{attribute 'pytmc' := 'pv: TST:MOTION'}
+{attribute 'TcLinkTo' := '	  .bLimitForwardEnable  := TIIB[M1-EL1084]^STM Status^Status^Digital input 1;
+                              .bLimitBackwardEnable := TIIB[M1-EL1084]^STM Status^Status^Digital input 2;
+                              .nRawEncoderULINT     := TIIB[M1-EL5021]^FB Inputs Channel 1^Position'}
+
+M1: DUT_MotionStage := (sName := 'TST:MOTION',
+                        bPowerSelf := True,
+                        nEnableMode:= ENUM_StageEnableMode.DURING_MOTION);
+
+fbmotion1 : FB_MotionStage;
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbmotion1(stMotionStage:=M1);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
