@@ -9,7 +9,7 @@ PROJECT_PATH := ../../motion-test-stand/motion-test-stand.tsproj
 PLC := Motion_Test_Stand
 
 PYTMC_OPTS :=
-PREFIX := PLC:$(PLC)
+PREFIX := PLC:TST:STAND
 
 # With two $$, as in $$(IOC) below, this will be expanded in the
 # environment of st.cmd:
@@ -17,7 +17,7 @@ DB_PARAMETERS := 'PREFIX=$(PREFIX):,IOCNAME=$$(IOC),IOC=$$(IOC)'
 
 # If you know the netconfig name of the PLC, enter it here.  If specified, this
 # will be used in place of the auto-detected IP address from the PLC project:
-PLC_HOSTNAME :=
+PLC_HOSTNAME := 172.21.148.87
 # You may also specify the AMS Net ID of the PLC, but it's usually OK to
 # leave this blank as it can be found in the project:
 PLC_AMS_NET_ID :=
