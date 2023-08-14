@@ -11,17 +11,20 @@ M1: DUT_MotionStage := (sName := 'TST:MOTION',
                         nEnableMode:= ENUM_StageEnableMode.DURING_MOTION);
 
 {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL1084^Channel 1^Input'}
-bLimitForwardEnable AT %I* : BOOL;
+bLimitBackwardEnable AT %I* : BOOL;
 
 {attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL1084^Channel 2^Input'}
-bLimitBackwardEnable AT %I* : BOOL;
+bLimitForwardEnable AT %I* : BOOL;
+
+
 
 fbmotion1 : FB_MotionStage;
 
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[M1.bLimitForwardEnable 	:= Not bLimitForwardEnable;
+      <ST><![CDATA[// GX-F8A are NPN 
+M1.bLimitForwardEnable 	:= Not bLimitForwardEnable;
 M1.bLimitBackwardEnable := Not bLimitBackwardEnable;
 
 M1.bHardwareEnable := True;
