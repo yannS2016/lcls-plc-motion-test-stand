@@ -1091,8 +1091,8 @@ External Setpoint Generation:
 	<Mappings>
 		<OwnerA Name="Motion_Test_Stand Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL1084">
-				<Link VarA="PlcTask Inputs^MAIN.bLimitBackwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
-				<Link VarA="PlcTask Inputs^MAIN.bLimitForwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bLimitBackwardEnable" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^MAIN.bLimitForwardEnable" VarB="Channel 2^Input" AutoLink="true"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL5042">
 				<Link VarA="PlcTask Inputs^MAIN.M1.nRawEncoderULINT" VarB="FB Inputs Channel 1^Position" AutoLink="true"/>
