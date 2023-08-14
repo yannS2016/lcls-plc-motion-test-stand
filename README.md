@@ -1,4 +1,4 @@
-# lcls-plc-template-twincat-project
+# lcls-plc-motion-test-stand
 
 Motivation and Goals
 
