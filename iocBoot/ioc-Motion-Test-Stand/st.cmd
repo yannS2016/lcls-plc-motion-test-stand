@@ -1,12 +1,12 @@
-#!c:/Repos/ads-ioc/R0.6.1///bin/rhel7-x86_64/adsIoc
+#!/reg/g/pcds/epics/ioc/common/ads-ioc/R0.6.1/bin/rhel7-x86_64/adsIoc
 ################### AUTO-GENERATED DO NOT EDIT ###################
 #
 #         Project: motion-test-stand.tsproj
 #        PLC name: Motion_Test_Stand (Motion_Test_Stand Instance)
-# Generated using: pytmc 2.15.2.dev0+g73bd2d9.d20230727
-# Project version: unknown
-#    Project hash: unknown
-#     PLC IP/host: 172.21.148.87
+# Generated using: pytmc 2.15.1
+# Project version: df2bee3
+#    Project hash: df2bee3cff316049470a602767d8b8dbb78435a8
+#     PLC IP/host: 172.21.148.87 (Specified in Makefile; project has: 172.21.148.87)
 #      PLC Net ID: 172.21.148.87.1.1
 # ** DEVELOPMENT MODE IOC **
 # * Using IOC boot directory for autosave.
@@ -24,8 +24,8 @@
 
 epicsEnvSet("ADS_IOC_TOP", "$(TOP)" )
 
-epicsEnvSet("ENGINEER", "" )
-epicsEnvSet("LOCATION", "PLC:Motion_Test_Stand" )
+epicsEnvSet("ENGINEER", "jozamudi" )
+epicsEnvSet("LOCATION", "PLC:TST:STAND" )
 epicsEnvSet("IOCSH_PS1", "$(IOC)> " )
 epicsEnvSet("ACF_FILE", "$(ADS_IOC_TOP)/iocBoot/templates/unrestricted.acf")
 
@@ -44,7 +44,7 @@ epicsEnvSet("ADS_TIMEOUT_MS",   "1000")
 epicsEnvSet("ADS_TIME_SOURCE",  "0")
 
 # Add a route to the PLC automatically:
-system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.148.87 ^172.*$")
+system("${ADS_IOC_TOP}/scripts/add_route.sh 172.21.148.87 ^172.*")
 
 # adsAsynPortDriverConfigure(portName, ipaddr, amsaddr, amsport,
 #    asynParamTableSize, priority, noAutoConnect, defaultSampleTimeMS,
@@ -75,7 +75,7 @@ cd "$(ADS_IOC_TOP)/db"
 
 
 epicsEnvSet("MOTOR_PORT",     "PLC_ADS")
-epicsEnvSet("PREFIX",         "PLC:Motion_Test_Stand:")
+epicsEnvSet("PREFIX",         "PLC:TST:STAND:")
 epicsEnvSet("NUMAXES",        "1")
 epicsEnvSet("MOVE_POLL_RATE", "200")
 epicsEnvSet("IDLE_POLL_RATE", "1000")
@@ -123,35 +123,35 @@ dbLoadRecords("EthercatMCreadback.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME
 dbLoadRecords("EthercatMCdebug.template", "PREFIX=$(MOTOR_PREFIX), MOTOR_NAME=$(MOTOR_NAME), MOTOR_PORT=$(MOTOR_PORT), AXIS_NO=$(AXIS_NO), PREC=3")
 
 
-dbLoadRecords("iocSoft.db", "IOC=PLC:Motion_Test_Stand")
-dbLoadRecords("save_restoreStatus.db", "P=PLC:Motion_Test_Stand:")
+dbLoadRecords("iocSoft.db", "IOC=PLC:TST:STAND")
+dbLoadRecords("save_restoreStatus.db", "P=PLC:TST:STAND:")
 dbLoadRecords("caPutLog.db", "IOC=$(IOC)")
 
 ## TwinCAT task, application, and project information databases ##
-dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:Motion_Test_Stand,IDX=1")
-dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:Motion_Test_Stand")
+dbLoadRecords("TwinCAT_TaskInfo.db", "PORT=$(ASYN_PORT),PREFIX=PLC:TST:STAND,IDX=1")
+dbLoadRecords("TwinCAT_AppInfo.db", "PORT=$(ASYN_PORT), PREFIX=PLC:TST:STAND")
 
-dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:Motion_Test_Stand,PROJECT=motion-test-stand.tsproj,HASH=unknown,VERSION=unknown,PYTMC=2.15.2.dev0+g73bd2d9.d20230727,PLC_HOST=172.21.148.87")
+dbLoadRecords("TwinCAT_Project.db", "PREFIX=PLC:TST:STAND,PROJECT=motion-test-stand.tsproj,HASH=df2bee3,VERSION=df2bee3,PYTMC=2.15.1,PLC_HOST=172.21.148.87")
 
 #   lcls-twincat-motion: * (SLAC)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Motion_Test_Stand,DEPENDENCY=lcls-twincat-motion,VERSION=*,VENDOR=SLAC")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TST:STAND,DEPENDENCY=lcls-twincat-motion,VERSION=*,VENDOR=SLAC")
 #   Tc2_Standard: * (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Motion_Test_Stand,DEPENDENCY=Tc2_Standard,VERSION=*,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TST:STAND,DEPENDENCY=Tc2_Standard,VERSION=*,VENDOR=Beckhoff Automation GmbH")
 #   Tc2_System: * (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Motion_Test_Stand,DEPENDENCY=Tc2_System,VERSION=*,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TST:STAND,DEPENDENCY=Tc2_System,VERSION=*,VENDOR=Beckhoff Automation GmbH")
 #   Tc3_Module: * (Beckhoff Automation GmbH)
-dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:Motion_Test_Stand,DEPENDENCY=Tc3_Module,VERSION=*,VENDOR=Beckhoff Automation GmbH")
+dbLoadRecords("TwinCAT_Dependency.db", "PREFIX=PLC:TST:STAND,DEPENDENCY=Tc3_Module,VERSION=*,VENDOR=Beckhoff Automation GmbH")
 
 cd "$(IOC_TOP)"
 
 ## PLC Project Database files ##
-dbLoadRecords("Motion_Test_Stand.db", "PORT=$(ASYN_PORT),PREFIX=PLC:Motion_Test_Stand:,IOCNAME=$(IOC),IOC=$(IOC)")
+dbLoadRecords("Motion_Test_Stand.db", "PORT=$(ASYN_PORT),PREFIX=PLC:TST:STAND:,IOCNAME=$(IOC),IOC=$(IOC)")
 
 # Total records: 165
 callbackSetQueueSize(2330)
 
 # Autosave and archive settings:
-save_restoreSet_status_prefix("PLC:Motion_Test_Stand:")
+save_restoreSet_status_prefix("PLC:TST:STAND:")
 save_restoreSet_IncompleteSetsOk(1)
 save_restoreSet_DatedBackupFiles(1)
 set_pass0_restoreFile("info_positions.sav")
