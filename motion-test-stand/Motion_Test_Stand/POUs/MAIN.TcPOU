@@ -1,19 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="MAIN" Id="{2514b5fd-88f4-47c5-be60-871b9fead928}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 
 {attribute 'pytmc' := 'pv: TST:MOTION'}
-{attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL5042^FB Inputs Channel 1^Position'}
-M1: DUT_MotionStage := (sName := 'TST:MOTION',
+//{attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL5042^FB Inputs Channel 1^Position'}
+//{attribute 'TcLinkTo' := '.nRawEncoderULINT     := TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL5042)^FB Inputs Channel 1^Position'}
+{attribute 'TcLinkTo' := '.nRawEncoderUINT     := TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL7031)^ENC Status compact^Counter value'}
+M1: ST_MotionStage := (sName := 'TST:MOTION',
                         bPowerSelf := True,
-                        nEnableMode:= ENUM_StageEnableMode.DURING_MOTION);
+                        nEnableMode:= ENUM_StageEnableMode.DURING_MOTION,
+						fHomePosition:=0.0, 
+						nHomingMode:=ENUM_EpicsHomeCmd.HIGH_LIMIT);
 
-{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL1084^Channel 1^Input'}
+//{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL1084^Channel 1^Input'}
+{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL7031)^STM Status^Status^Digital input 2'}
 bLimitBackwardEnable AT %I* : BOOL;
 
-{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL1084^Channel 2^Input'}
+//{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^M1-EL1084^Channel 2^Input'}
+{attribute 'TcLinkTo' := 'TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL7031)^STM Status^Status^Digital input 1'}
 bLimitForwardEnable AT %I* : BOOL;
 
 
@@ -24,11 +30,15 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// GX-F8A are NPN 
-M1.bLimitForwardEnable 	:= Not bLimitForwardEnable;
-M1.bLimitBackwardEnable := Not bLimitBackwardEnable;
+M1.bLimitForwardEnable 	:= bLimitForwardEnable;
+M1.bLimitBackwardEnable := bLimitBackwardEnable;
 
 M1.bHardwareEnable := True;
 fbmotion1(stMotionStage:=M1);]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="3" Count="4" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
