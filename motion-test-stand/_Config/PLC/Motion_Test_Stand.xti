@@ -983,7 +983,7 @@ External Setpoint Generation:
 		</DataType>
 	</DataTypes>
 	<Project GUID="{2192EC6B-223F-485A-B522-AE156ED02DAE}" Name="Motion_Test_Stand" PrjFilePath="..\..\Motion_Test_Stand\Motion_Test_Stand.plcproj" TmcFilePath="..\..\Motion_Test_Stand\Motion_Test_Stand.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Motion_Test_Stand\Motion_Test_Stand.tmc" TmcHash="{57C0C249-CA43-C29B-9438-CCD93C238DCF}">
+		<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Motion_Test_Stand\Motion_Test_Stand.tmc" TmcHash="{49F0BD48-0DD6-2501-7D56-1B9BA29ED54D}">
 			<Name>Motion_Test_Stand Instance</Name>
 			<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 			<Vars VarGrpType="1">
@@ -1036,6 +1036,11 @@ External Setpoint Generation:
 					<Name>MAIN.M1.nRawEncoderINT</Name>
 					<Comment><![CDATA[ Raw encoder IO for INT (LVDT)]]></Comment>
 					<Type>INT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.M1.nRawEncoderDINT</Name>
+					<Comment><![CDATA[ Raw encoder IO for INT (EL5072 LVDT)]]></Comment>
+					<Type>DINT</Type>
 				</Var>
 				<Var>
 					<Name>MAIN.fbmotion1.fbDriveVirtual.MasterAxis.NcToPlc</Name>
@@ -1101,7 +1106,7 @@ External Setpoint Generation:
 				<Link VarA="PlcTask Inputs^MAIN.bLimitBackwardEnable" VarB="STM Status^Status^Digital input 2" AutoLink="true" Size="1"/>
 				<Link VarA="PlcTask Inputs^MAIN.bLimitForwardEnable" VarB="STM Status^Status^Digital input 1" AutoLink="true" Size="1"/>
 			</OwnerB>
-			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
+			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^absolute">
 				<Link VarA="PlcTask Inputs^MAIN.M1.Axis.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^MAIN.M1.Axis.PlcToNc" VarB="Inputs^FromPlc"/>
 			</OwnerB>
